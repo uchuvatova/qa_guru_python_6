@@ -1,5 +1,4 @@
 from datetime import time
-import inspect
 
 
 def test_dark_theme_by_time():
@@ -28,9 +27,9 @@ def test_dark_theme_by_time_and_user_choice():
     dark_theme_enabled_by_user = True
     # TODO переключите темную тему в зависимости от времени суток,
     #  но учтите что темная тема может быть включена вручную
-    if dark_theme_enabled_by_user == True:
+    if dark_theme_enabled_by_user is True:
         is_dark_theme = True
-    elif dark_theme_enabled_by_user == False:
+    elif dark_theme_enabled_by_user is False:
         is_dark_theme = False
     elif time(hour=22) > current_time > time(hour=6):
         is_dark_theme = False
@@ -61,7 +60,6 @@ def test_find_suitable_user():
     assert suitable_users == {"name": "Olga", "age": 45}
 
     # TODO найдите всех пользователей младше 20 лет
-    suitable_users = None
     suitable_users = [suitable_users for suitable_users in users if suitable_users['age'] < 20]
     print(suitable_users)
     assert suitable_users == [
@@ -81,7 +79,10 @@ def test_find_suitable_user():
 def description(func, *args):
     function_name = func.__name__.replace('_', ' ').title()
     result_string = f"{function_name} [{', '.join(args)}]"
+    print(result_string)
     return result_string
+
+
 
 def test_readable_function():
     open_browser(browser_name="Chrome")
